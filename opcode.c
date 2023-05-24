@@ -14,7 +14,8 @@
  * Return: 0 if opcode executed successfully, -1 on failure
  */
 
-int execute_opcode(const char *opcode, stack_t **stack, unsigned int line_number)
+int execute_opcode(const char *opcode, stack_t **stack,
+unsigned int line_number)
 {
 if (strcmp(opcode, "push") == 0)
 push(stack, line_number);
@@ -61,11 +62,15 @@ return (0);
 /**
  * set_mode - Sets the stack and queue modes.
  * @stack: Double pointer to the top of the stack.
- * @stack_mode_val: Value to set for stack mode (non-zero for enabled, 0 for disabled).
- * @queue_mode_val: Value to set for queue mode (non-zero for enabled, 0 for disabled).
+ * @stack_mode_val: Value to set for stack mode
+ * (non-zero for enabled, 0 for disabled).
+ * @queue_mode_val: Value to set for queue mode
+ * (non-zero for enabled, 0 for disabled).
  *
- * Description: This function updates the values of the stack_mode and queue_mode
- * variables based on the provided parameters. It allows enabling or disabling the
+ * Description: This function updates
+ * the values of the stack_mode and queue_mode
+ * variables based on the provided parameters.
+ * It allows enabling or disabling the
  * stack mode and queue mode in a centralized and reusable way.
  */
 
