@@ -157,5 +157,5 @@ int main(int argc, char *argv[])
     free_stack(stack);
     fclose(fp);
 
-    return EXIT_SUCCESS;
+    return (EXIT_SUCCESS);
 }
