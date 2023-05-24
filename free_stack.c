@@ -10,15 +10,15 @@
  * It releases the memory allocated for each node and updates the
  * pointers accordingly.
  */
+
 void free_stack(stack_t *stack)
 {
-    stack_t *current = stack;
-    stack_t *next;
-
-    while (current != NULL)
-    {
-        next = current->next;
-        free(current);
-        current = next;
-    }
+stack_t *current = stack;
+stack_t *next;
+while (current != NULL)
+{
+next = current->next;
+free(current);
+current = next;
+}
 }

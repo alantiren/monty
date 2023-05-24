@@ -15,16 +15,15 @@
 
 int is_numeric(const char *str)
 {
-    int i;
-    for (i = 0; str[i] != '\0'; i++)
-    {
-        if (i == 0 && str[i] == '-')
-            continue;
-        if (str[i] < '0' || str[i] > '9')
-            return (0);
-    }
-
-    return (1);
+int i;
+for (i = 0; str[i] != '\0'; i++)
+{
+if (i == 0 && str[i] == '-')
+continue;
+if (str[i] < '0' || str[i] > '9')
+return (0);
+}
+return (1);
 }
 
 /**
@@ -35,32 +34,31 @@ int is_numeric(const char *str)
 
 void push(stack_t **stack, unsigned int line_number)
 {
-    char *n;
-    int value;
-    stack_t *new_node;
-
-    n = strtok(NULL, " \t\n");
-    if (n == NULL || !is_numeric(n))
-    {
-        fprintf(stderr, "L%u: usage: push integer\n", line_number);
-        exit(EXIT_FAILURE);
-    }
-    value = atoi(n);
-    new_node = malloc(sizeof(stack_t));
-    if (new_node == NULL)
-    {
-        fprintf(stderr, "Error: malloc failed\n");
-        free_stack(*stack);
-        exit(EXIT_FAILURE);
-    }
-    new_node->n = value;
-    new_node->prev = NULL;
-    if (*stack != NULL)
-    {
-        new_node->next = *stack;
-        (*stack)->prev = new_node;
-    }
-    *stack = new_node;
+char *n;
+int value;
+stack_t *new_node;
+n = strtok(NULL, " \t\n");
+if (n == NULL || !is_numeric(n))
+{
+fprintf(stderr, "L%u: usage: push integer\n", line_number);
+exit(EXIT_FAILURE);
+}
+value = atoi(n);
+new_node = malloc(sizeof(stack_t));
+if (new_node == NULL)
+{
+fprintf(stderr, "Error: malloc failed\n");
+free_stack(*stack);
+exit(EXIT_FAILURE);
+}
+new_node->n = value;
+new_node->prev = NULL;
+if (*stack != NULL)
+{
+new_node->next = *stack;
+(*stack)->prev = new_node;
+}
+*stack = new_node;
 }
 
 /**
@@ -72,15 +70,15 @@ void push(stack_t **stack, unsigned int line_number)
  * starting from the top of the stack.
  * If the stack is empty, nothing is printed.
  */
+
 void pall(stack_t **stack)
 {
-    stack_t *current = *stack;
-
-    while (current != NULL)
-    {
-        printf("%d\n", current->n);
-        current = current->next;
-    }
+stack_t *current = *stack;
+while (current != NULL)
+{
+printf("%d\n", current->n);
+current = current->next;
+}
 }
 
 /**
@@ -100,62 +98,57 @@ void pall(stack_t **stack)
 
 int main(int argc, char *argv[])
 {
-    FILE *fp;
-    char *line = NULL;
-    unsigned int line_number = 0;
-    stack_t *stack = NULL;
-    char *opcode;
-
-    if (argc != 2)
-    {
-        fprintf(stderr, "USAGE: monty file\n");
-        exit(EXIT_FAILURE);
-    }
-
-    fp = fopen(argv[1], "r");
-    if (fp == NULL)
-    {
-        fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-        exit(EXIT_FAILURE);
-    }
-
-    while (fgets(line, sizeof(line), fp) != NULL)
-    {
-        line_number++;
-        opcode = strtok(line, " \t\n");
-
-        if (opcode != NULL && opcode[0] != '#')
-        {
-            if (strcmp(opcode, "push") == 0)
-            {
-                char *arg = strtok(NULL, " \t\n");
-                if (arg == NULL || !is_numeric(arg))
-                {
-                    fprintf(stderr, "L%u: usage: push integer\n", line_number);
-                    free(line);
-                    free_stack(stack);
-                    fclose(fp);
-                    exit(EXIT_FAILURE);
-                }
-                push(&stack, atoi(arg));
-            }
-            else if (strcmp(opcode, "pall") == 0)
-            {
-                pall(&stack);
-            }
-            else
-            {
-                fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
-                free(line);
-                free_stack(stack);
-                fclose(fp);
-                exit(EXIT_FAILURE);
-            }
-        }
-    }
-    free(line);
-    free_stack(stack);
-    fclose(fp);
-
-    return (EXIT_SUCCESS);
+FILE *fp;
+char *line = NULL;
+unsigned int line_number = 0;
+stack_t *stack = NULL;
+char *opcode;
+if (argc != 2)
+{
+fprintf(stderr, "USAGE: monty file\n");
+exit(EXIT_FAILURE);
+}
+fp = fopen(argv[1], "r");
+if (fp == NULL)
+{
+fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+exit(EXIT_FAILURE);
+}
+while (fgets(line, sizeof(line), fp) != NULL)
+{
+line_number++;
+opcode = strtok(line, " \t\n");
+if (opcode != NULL && opcode[0] != '#')
+{
+if (strcmp(opcode, "push") == 0)
+{
+char *arg = strtok(NULL, " \t\n");
+if (arg == NULL || !is_numeric(arg))
+{
+fprintf(stderr, "L%u: usage: push integer\n", line_number);
+free(line);
+free_stack(stack);
+fclose(fp);
+exit(EXIT_FAILURE);
+}
+push(&stack, atoi(arg));
+}
+else if (strcmp(opcode, "pall") == 0)
+{
+pall(&stack);
+}
+else
+{
+fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
+free(line);
+free_stack(stack);
+fclose(fp);
+exit(EXIT_FAILURE);
+}
+}
+}
+free(line);
+free_stack(stack);
+fclose(fp);
+return (EXIT_SUCCESS);
 }
