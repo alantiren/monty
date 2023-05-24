@@ -62,8 +62,10 @@ if (*stack != NULL)
 new_node->next = *stack;
 (*stack)->prev = new_node;
 }
+
 *stack = new_node;
 }
+
 
 /**
  * pall - Implements the pall opcode.
