@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
+
 #include "monty.h"
 
 /**
@@ -225,7 +227,7 @@ printf("%c\n", value);
  * @line_number: Line number of the opcode
  */
 
-void pstr(stack_t **stack, unsigned int line_number)
+void pstr(stack_t **stack)
 {
 stack_t *current = *stack;
 
@@ -243,7 +245,7 @@ printf("\n");
  * @line_number: Line number of the opcode
  */
 
-void rotl(stack_t **stack, unsigned int line_number)
+void rotl(stack_t **stack)
 {
 stack_t *first = *stack;
 stack_t *second = (*stack)->next;
@@ -267,7 +269,7 @@ first->next->next = NULL;
  * @line_number: Line number of the opcode
  */
 
-void rotr(stack_t **stack, unsigned int line_number)
+void rotr(stack_t **stack)
 {
 stack_t *last = *stack;
 stack_t *second_last;
