@@ -123,12 +123,6 @@ if (opcode != NULL && opcode[0] != '#')
 {
 if (strcmp(opcode, "push") == 0)
 {
-char *arg = strtok(NULL, " \t\n");
-if (arg == NULL || !is_numeric(arg))
-{
-fprintf(stderr, "L%u: usage: push integer\n", line_number);
-exit(EXIT_FAILURE);
-}
 push(&stack, line_number);
 }
 else if (strcmp(opcode, "pall") == 0)
