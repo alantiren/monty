@@ -244,7 +244,6 @@ printf("\n");
 /**
  * rotl - Rotates the stack to the top
  * @stack: Double pointer to the stack
- * @line_number: Line number of the opcode
  */
 
 void rotl(stack_t **stack)
@@ -267,7 +266,6 @@ first->next->next = NULL;
 /**
  * rotr - Rotates the stack to the bottom
  * @stack: Double pointer to the stack
- * @line_number: Line number of the opcode
  */
 
 void rotr(stack_t **stack)
