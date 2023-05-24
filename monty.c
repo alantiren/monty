@@ -136,9 +136,9 @@ exit(EXIT_FAILURE);
 }
 }
 }
+}
 free(line);
 free_stack(stack);
 fclose(fp);
 return EXIT_SUCCESS;
-}
 }
