@@ -129,12 +129,7 @@ if (arg == NULL || !is_numeric(arg))
 fprintf(stderr, "L%u: usage: push integer\n", line_number);
 exit(EXIT_FAILURE);
 }
-push(&stack, line_number, atoi(arg));
-}
 else if (strcmp(opcode, "pall") == 0)
-{
-pall(&stack, line_number);
-}
 else
 {
 fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
