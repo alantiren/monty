@@ -98,8 +98,9 @@ int main(int argc, char *argv[])
     FILE *fp;
     char *line = NULL;
     size_t len = 0;
-    stack_t *stack = NULL;
+    ssize_t read;
     unsigned int line_number = 0;
+    stack_t *stack = NULL;
 
     if (argc != 2)
     {
@@ -114,28 +115,44 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    while (getline(&line, &len, fp) != -1)
+    char *opcode;
+    while ((read = getline(&line, &len, fp)) != -1)
     {
         line_number++;
+        opcode = strtok(line, " \t\n");
 
-        char *opcode = strtok(line, " \t\n");
-
-        if (opcode != NULL)
+        if (opcode != NULL && opcode[0] != '#')
         {
             if (strcmp(opcode, "push") == 0)
-                push(&stack, line_number);
+            {
+                char *arg = strtok(NULL, " \t\n");
+                if (arg == NULL || !is_numeric(arg))
+                {
+                    fprintf(stderr, "L%u: usage: push integer\n", line_number);
+                    free(line);
+                    free_stack(stack);
+                    fclose(fp);
+                    exit(EXIT_FAILURE);
+                }
+                push(&stack, atoi(arg));
+            }
             else if (strcmp(opcode, "pall") == 0)
-                pall(&stack, line_number);
+            {
+                pall(&stack);
+            }
             else
             {
                 fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
+                free(line);
+                free_stack(stack);
+                fclose(fp);
                 exit(EXIT_FAILURE);
             }
         }
     }
 
-    fclose(fp);
     free(line);
-
+    free_stack(stack);
+    fclose(fp);
     return (EXIT_SUCCESS);
 }
