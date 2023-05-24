@@ -37,7 +37,6 @@ void push(stack_t **stack, unsigned int line_number)
 char *n;
 int value;
 stack_t *new_node;
-push(&stack, line_number, atoi(arg));
 n = strtok(NULL, " \t\n");
 if (n == NULL || !is_numeric(n))
 {
@@ -74,7 +73,6 @@ new_node->next = *stack;
 
 void pall(stack_t **stack)
 {
-pall(&stack, line_number);
 stack_t *current = *stack;
 while (current != NULL)
 {
