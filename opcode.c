@@ -18,6 +18,10 @@ int execute_opcode(const char *opcode, stack_t **stack,
 unsigned int line_number)
 {
 if (strcmp(opcode, "push") == 0)
+else if (strcmp(opcode, "pint") == 0)
+{
+pint(&stack, line_number);
+}
 {
 push(stack, line_number);
 }
@@ -29,10 +33,6 @@ else
 {
 fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
 return (-1);
-}
-else if (strcmp(opcode, "pint") == 0)
-{
-pint(&stack, line_number);
 }
 
 return (0);
