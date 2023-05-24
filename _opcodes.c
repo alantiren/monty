@@ -227,7 +227,7 @@ printf("%c\n", value);
  * @line_number: Line number of the opcode being executed
  */
 
-void pstr(stack_t **stack, unsigned int line_number)
+void pstr(stack_t **stack)
 {
 stack_t *current = *stack;
 
