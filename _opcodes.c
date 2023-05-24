@@ -34,7 +34,8 @@ fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
 free_stack(*stack);
 exit(EXIT_FAILURE);
 }
-stack_t *temp = *stack;
+stack_t *temp;
+temp = *stack;
 *stack = (*stack)->next;
 if (*stack != NULL)
 (*stack)->prev = NULL;
