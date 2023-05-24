@@ -101,7 +101,7 @@ int main(int argc, char *argv[])
     FILE *fp;
     char *line = NULL;
     size_t len = 0;
-    size_t read;
+    ssize_t read;
     unsigned int line_number = 0;
     stack_t *stack = NULL;
     char *opcode;
@@ -119,7 +119,7 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    while ((read = fgets(line, sizeof(line), fp)) != NULL)
+    while ((read = getline(&line, &len, fp)) != -1)
     {
         line_number++;
         opcode = strtok(line, " \t\n");
