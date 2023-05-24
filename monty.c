@@ -37,14 +37,12 @@ void push(stack_t **stack, unsigned int line_number)
 char *n;
 int value;
 stack_t *new_node;
-
 n = strtok(NULL, " \t\n");
 if (n == NULL || !is_numeric(n))
 {
 fprintf(stderr, "L%u: usage: push integer\n", line_number);
 exit(EXIT_FAILURE);
 }
-
 value = atoi(n);
 new_node = malloc(sizeof(stack_t));
 if (new_node == NULL)
@@ -53,10 +51,8 @@ fprintf(stderr, "Error: malloc failed\n");
 free_stack(*stack);
 exit(EXIT_FAILURE);
 }
-
 new_node->n = value;
 new_node->prev = NULL;
-
 if (*stack != NULL)
 {
 new_node->next = *stack;
@@ -78,7 +74,6 @@ if (*stack != NULL)
 *stack = new_node;
 }
 }
-
 
 /**
  * pall - Implements the pall opcode.
