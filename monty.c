@@ -130,7 +130,6 @@ fprintf(stderr, "L%u: usage: push integer\n", line_number);
 exit(EXIT_FAILURE);
 }
 else if (strcmp(opcode, "pall") == 0)
-else
 {
 fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
 exit(EXIT_FAILURE);
@@ -141,4 +140,5 @@ free(line);
 free_stack(stack);
 fclose(fp);
 return (EXIT_SUCCESS);
+}
 }
