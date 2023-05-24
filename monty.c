@@ -9,7 +9,8 @@
  *
  * Return: 1 if the string is numeric, 0 otherwise
  */
-int is_numeric(const char *);
+
+int is_numeric(const char *)
 {
     int i;
     for (i = 0; str[i] != '\0'; i++)
@@ -28,7 +29,8 @@ int is_numeric(const char *);
  * @stack: Pointer to the stack
  * @line_number: Line number of the opcode in the file
  */
-void push(stack_t **stack, unsigned int line_number);
+
+void push(stack_t **stack, unsigned int line_number)
 {
     void free_stack(stack_t *stack);
     char *n;
@@ -68,7 +70,7 @@ void push(stack_t **stack, unsigned int line_number);
  * starting from the top of the stack.
  * If the stack is empty, nothing is printed.
  */
-void pall(stack_t **stack);
+void pall(stack_t **stack)
 {
     stack_t *current = *stack;
 
@@ -93,7 +95,8 @@ void pall(stack_t **stack);
  *
  * Return: EXIT_SUCCESS upon successful execution, EXIT_FAILURE otherwise.
  */
-int main(int argc, char *argv[]);
+
+int main(int argc, char *argv[])
 {
     FILE *fp;
     char *line = NULL;
