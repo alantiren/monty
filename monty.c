@@ -90,7 +90,8 @@ current = current->next;
  * executes the corresponding opcodes, and handles errors.
  * It creates and initializes the stack, reads each line of the file,
  * tokenizes the line to extract the opcode, and executes the opcode function.
- * If an unknown opcode is encountered or an error occurs, an error message is printed
+ * If an unknown opcode is encountered or an error occurs,
+ * an error message is printed
  * and the program exits with EXIT_FAILURE.
  *
  * Return: EXIT_SUCCESS upon successful execution, EXIT_FAILURE otherwise.
