@@ -43,11 +43,16 @@ return (0);
 
 int process_file(FILE *fp)
 {
-char *line = NULL;
+char *line = malloc(MAX_LINE_LENGTH);
 unsigned int line_number = 0;
 stack_t *stack = NULL;
 char *opcode;
 
+if (line == NULL)
+{
+fprintf(stderr, "Error: malloc failed\n");
+return (-1);
+}
 while (fgets(line, MAX_LINE_LENGTH, fp) != NULL)
 {
 line_number++;
