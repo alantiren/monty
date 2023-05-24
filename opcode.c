@@ -33,8 +33,8 @@ else if (strcmp(opcode, "nop") == 0)
 nop(stack, line_number);
 else if (strcmp(opcode, "sub") == 0)
 sub(stack, line_number);
-else if (strcmp(opcode, "div") == 0)
-div(stack, line_number);
+else if (strcmp(opcode, "div_op") == 0)
+div_op(stack, line_number);
 else if (strcmp(opcode, "mul") == 0)
 mul(stack, line_number);
 else if (strcmp(opcode, "mod") == 0)
@@ -48,11 +48,15 @@ rotl(stack, line_number);
 else if (strcmp(opcode, "rotr") == 0)
 rotr(stack, line_number);
 else if (strcmp(opcode, "stack") == 0)
+{
 queue_mode = 0;
 stack_mode = 1;
+}
 else if (strcmp(opcode, "queue") == 0)
+{
 queue_mode = 1;
 stack_mode = 0;
+}
 else
 {
 fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
