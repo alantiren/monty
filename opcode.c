@@ -18,16 +18,16 @@ int execute_opcode(const char *opcode, stack_t **stack,
 unsigned int line_number)
 {
 if (strcmp(opcode, "push") == 0)
-else if (strcmp(opcode, "pint") == 0)
-{
-pint(&stack, line_number);
-}
 {
 push(stack, line_number);
 }
 else if (strcmp(opcode, "pall") == 0)
 {
 pall(stack);
+}
+else if (strcmp(opcode, "pint") == 0)
+{
+pint(&stack, line_number);
 }
 else
 {
