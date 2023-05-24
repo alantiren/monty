@@ -64,7 +64,8 @@ new_node->next = *stack;
 /**
  * pall - Implements the pall opcode.
  * @stack: Double pointer to the top of the stack.
- * @line_number: The line number where the pall opcode appears.
+ * @line_number: The line number where
+ * the pall opcode appears.
  *
  * Description: The pall opcode prints all the values on the stack,
  * starting from the top of the stack.
@@ -140,5 +141,5 @@ exit(EXIT_FAILURE);
 free(line);
 free_stack(stack);
 fclose(fp);
-return EXIT_SUCCESS;
+return (EXIT_SUCCESS);
 }
