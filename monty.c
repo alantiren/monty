@@ -49,7 +49,7 @@ new_node = malloc(sizeof(stack_t));
 if (new_node == NULL)
 {
 fprintf(stderr, "Error: malloc failed\n");
-free_stack(**stack);
+free_stack(*stack);
 exit(EXIT_FAILURE);
 }
 new_node->n = value;

@@ -115,12 +115,12 @@ continue;
 if (execute_opcode(opcode, &stack, line_number) == -1)
 {
 free(line);
-free_stack(*stack);
+free_stack(stack);
 return (-1);
 }
 }
 
 free(line);
-free_stack(*stack);
+free_stack(stack);
 return (0);
 }
