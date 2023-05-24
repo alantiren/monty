@@ -30,6 +30,10 @@ else
 fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
 return (-1);
 }
+else if (strcmp(opcode, "pint") == 0)
+{
+pint(&stack, line_number);
+}
 
 return (0);
 }
