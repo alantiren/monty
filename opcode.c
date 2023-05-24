@@ -12,7 +12,8 @@
  * Return: 0 if opcode executed successfully, -1 on failure
  */
 
-int execute_opcode(const char *opcode, stack_t **stack, unsigned int line_number)
+int execute_opcode(const char *opcode, stack_t **stack,
+unsigned int line_number)
 {
 if (strcmp(opcode, "push") == 0)
 {
