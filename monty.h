@@ -40,7 +40,7 @@ void (*f)(stack_t **stack, unsigned int line_number);
 /* Function prototypes */
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack);
-void free_stack(stack_t **stack);
+void free_stack(stack_t *stack);
 int is_numeric(const char *str);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
