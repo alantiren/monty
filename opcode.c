@@ -3,6 +3,8 @@
 #include <string.h>
 #include "monty.h"
 
+#define MAX_LINE_LENGTH 1000
+
 /**
  * execute_opcode - Executes the opcode function based on the given opcode
  * @opcode: The opcode to execute
