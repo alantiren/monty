@@ -33,12 +33,15 @@ else if (strcmp(opcode, "pop") == 0)
 {
 pop(stack, line_number);
 }
+else if (strcmp(opcode, "swap") == 0)
+{
+swap(stack, line_number);
+}
 else
 {
 fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
 return (-1);
 }
-
 return (0);
 }
 
