@@ -24,40 +24,37 @@ int is_numeric(const char *str)
 }
 
 /**
- * push - Implements the push opcode.
- * @stack: Double pointer to the top of the stack.
- * @line_number: The line number where the push opcode appears.
- *
- * Description: The push opcode pushes an element to the stack.
- * The argument to push must be an integer.
- * If the argument is not an integer or if there is no argument given,
- * an error message is printed and the program exits with EXIT_FAILURE.
- * The push operation allocates memory for a new node and adds it to the stack.
+ * push - Pushes an element to the stack
+ * @stack: Pointer to the stack
+ * @line_number: Line number of the opcode in the file
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-    char *arg = strtok(NULL, " \t\n");
+    char *n;
+    int value;
+    stack_t *new_node;
 
-    if (arg == NULL || !is_numeric(arg))
+    n = strtok(NULL, " \t\n");
+    if (n == NULL || !is_numeric(n))
     {
         fprintf(stderr, "L%u: usage: push integer\n", line_number);
         exit(EXIT_FAILURE);
     }
-
-    stack_t *new_node = malloc(sizeof(stack_t));
+    value = atoi(n);
+    new_node = malloc(sizeof(stack_t));
     if (new_node == NULL)
     {
         fprintf(stderr, "Error: malloc failed\n");
+        free_stack(*stack);
         exit(EXIT_FAILURE);
     }
-
-    new_node->n = atoi(arg);  // Converting the argument to an integer
+    new_node->n = value;
     new_node->prev = NULL;
-    new_node->next = *stack;
-
     if (*stack != NULL)
+    {
+        new_node->next = *stack;
         (*stack)->prev = new_node;
-
+    }
     *stack = new_node;
 }
 
