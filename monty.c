@@ -35,7 +35,6 @@ int is_numeric(const char *str)
 
 void push(stack_t **stack, unsigned int line_number)
 {
-    void free_stack(stack_t *stack);
     char *n;
     int value;
     stack_t *new_node;
