@@ -44,9 +44,9 @@ pchar(stack, line_number);
 else if (strcmp(opcode, "pstr") == 0)
 pstr(stack);
 else if (strcmp(opcode, "rotl") == 0)
-rotl(stack, line_number);
+rotl(stack);
 else if (strcmp(opcode, "rotr") == 0)
-rotr(stack, line_number);
+rotr(stack);
 else if (strcmp(opcode, "stack") == 0)
 {
 queue_mode = 0;
