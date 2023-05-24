@@ -4,24 +4,19 @@
 #include "monty.h"
 
 /**
- * is_numeric - Checks if a string is a valid integer.
- * @str: The string to check.
+ * is_numeric - Check if a string represents a numeric value
+ * @str: The string to check
  *
- * Return: 1 if the string is a valid integer, 0 otherwise.
+ * Return: 1 if the string is numeric, 0 otherwise
  */
 int is_numeric(const char *str)
 {
-    if (str == NULL || *str == '\0')
-        return (0);
-
-    int i = 0;
-    if (str[0] == '-')
-
-        i++;
-
-    for (; str[i] != '\0'; i++)
+    int i;
+    for (i = 0; str[i] != '\0'; i++)
     {
-        if (str[i] < '0' || str[i] > '9')  // Checking each character
+        if (i == 0 && str[i] == '-')
+            continue;
+        if (str[i] < '0' || str[i] > '9')
             return (0);
     }
 
