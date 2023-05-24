@@ -115,7 +115,7 @@ pop(stack, line_number);
 
 
 /**
- * div_op - Divides the second top element of the stack by the top element
+ * div - Divides the second top element of the stack by the top element
  * @stack: Double pointer to the top of the stack
  * @line_number: Line number of the opcode in the file
  *
@@ -126,7 +126,7 @@ pop(stack, line_number);
  * and the program exits with EXIT_FAILURE status.
  */
 
-void div_op(stack_t **stack, unsigned int line_number)
+void div(stack_t **stack, unsigned int line_number)
 {
 if (*stack == NULL || (*stack)->next == NULL)
 {
@@ -145,7 +145,7 @@ pop(stack, line_number);
 }
 
 /**
- * mul_op - Multiplies the second top element of the stack with the top element
+ * mul - Multiplies the second top element of the stack with the top element
  * @stack: Double pointer to the top of the stack
  * @line_number: Line number of the opcode in the file
  *
@@ -156,7 +156,7 @@ pop(stack, line_number);
  * EXIT_FAILURE status.
  */
 
-void mul_op(stack_t **stack, unsigned int line_number)
+void mul(stack_t **stack, unsigned int line_number)
 {
 if (*stack == NULL || (*stack)->next == NULL)
 {
@@ -169,7 +169,7 @@ pop(stack, line_number);
 }
 
 /**
- * mod_op - Computes the rest of the division of the second top element
+ * mod - Computes the rest of the division of the second top element
  *          of the stack by the top element
  * @stack: Double pointer to the top of the stack
  * @line_number: Line number of the opcode in the file
@@ -181,7 +181,7 @@ pop(stack, line_number);
  * message is printed and the program exits with EXIT_FAILURE status.
  */
 
-void mod_op(stack_t **stack, unsigned int line_number)
+void mod(stack_t **stack, unsigned int line_number)
 {
 if (*stack == NULL || (*stack)->next == NULL)
 {
