@@ -15,7 +15,7 @@ int is_numeric(const char *str)
         return (0);
 
     int i = 0;
-    if (str[0] == '-')  // Allowing negative numbers
+    if (str[0] == '-')
 
         i++;
 
@@ -115,7 +115,7 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    stack_t *stack = NULL;  // Create and initialize the stack
+    stack_t *stack = NULL;
 
     char *line = NULL;
     size_t len = 0;
@@ -130,9 +130,9 @@ int main(int argc, char *argv[])
         if (opcode != NULL)
         {
             if (strcmp(opcode, "push") == 0)
-                push(&stack, line_number);  // Execute push opcode
+                push(&stack, line_number);
             else if (strcmp(opcode, "pall") == 0)
-                pall(&stack, line_number);  // Execute pall opcode
+                pall(&stack, line_number);
             else
             {
                 fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
