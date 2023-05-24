@@ -104,7 +104,7 @@ void sub(stack_t **stack, unsigned int line_number)
 if (*stack == NULL || (*stack)->next == NULL)
 {
 fprintf(stderr, "L%u: can't sub, stack too short\n", line_number);
-exit_program(EXIT_FAILURE);
+exit(EXIT_FAILURE);
 }
 
 int result;
