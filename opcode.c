@@ -27,7 +27,7 @@ pall(stack);
 }
 else if (strcmp(opcode, "pint") == 0)
 {
-pint(&stack, line_number);
+pint(stack, line_number);
 }
 else
 {
