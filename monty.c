@@ -107,12 +107,14 @@ stack_t *stack = NULL;
 char *opcode;
 if (argc != 2)
 {
-print_usage_error();
+fprintf(stderr, "USAGE: monty file\n");
+exit(EXIT_FAILURE);
 }
 fp = fopen(argv[1], "r");
 if (fp == NULL)
 {
-print_file_open_error(argv[1]);
+fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+exit(EXIT_FAILURE);
 }
 while (getline(&line, &line_length, fp) != -1)
 {
@@ -125,9 +127,10 @@ if (strcmp(opcode, "push") == 0)
 char *arg = strtok(NULL, " \t\n");
 if (arg == NULL || !is_numeric(arg))
 {
-print_push_argument_error(line_number);
+fprintf(stderr, "L%u: usage: push integer\n", line_number);
+exit(EXIT_FAILURE);
 }
-push(&stack, line_number, atoi(arg));
+push(&stack, atoi(arg));
 }
 else if (strcmp(opcode, "pall") == 0)
 {
@@ -135,12 +138,13 @@ pall(&stack);
 }
 else
 {
-print_unknown_instruction_error(line_number, opcode);
+fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
+exit(EXIT_FAILURE);
 }
 }
 }
 free(line);
 free_stack(stack);
 fclose(fp);
-return EXIT_SUCCESS;
+return (EXIT_SUCCESS);
 }
