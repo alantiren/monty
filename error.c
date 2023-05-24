@@ -22,11 +22,11 @@ void print_file_open_error(const char *filename)
 }
 
 /**
- * print_unknown_instruction_error - Prints the unknown instruction error message.
+ * print_unknown_error - Prints the unknown instruction.
  * @line_number: The line number where the unknown instruction appears.
  * @opcode: The unknown opcode.
  */
-void print_unknown_instruction_error(unsigned int line_number, const char *opcode)
+void print_unknown_error(unsigned int line_number, const char *opcode)
 {
 	fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
 	exit(EXIT_FAILURE);
