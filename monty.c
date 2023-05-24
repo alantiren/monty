@@ -116,7 +116,7 @@ if (fp == NULL)
 fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 exit(EXIT_FAILURE);
 }
-while (getline(&line, &line_length, fp) != -1)
+while (fgets(line, MAX_LINE_LENGTH, fp) != NULL)
 {
 line_number++;
 opcode = strtok(line, " \t\n");
