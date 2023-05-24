@@ -37,6 +37,7 @@ void push(stack_t **stack, unsigned int line_number)
 char *n;
 int value;
 stack_t *new_node;
+push(&stack, line_number, atoi(arg));
 n = strtok(NULL, " \t\n");
 if (n == NULL || !is_numeric(n))
 {
@@ -73,6 +74,7 @@ new_node->next = *stack;
 
 void pall(stack_t **stack)
 {
+pall(&stack, line_number);
 stack_t *current = *stack;
 while (current != NULL)
 {
@@ -100,7 +102,8 @@ current = current->next;
 int main(int argc, char *argv[])
 {
 FILE *fp;
-char *line = NULL;
+char *line = malloc(MAX_LINE_LENGTH);
+size_t line_length = 0;
 unsigned int line_number = 0;
 stack_t *stack = NULL;
 char *opcode;
@@ -129,11 +132,11 @@ if (arg == NULL || !is_numeric(arg))
 fprintf(stderr, "L%u: usage: push integer\n", line_number);
 exit(EXIT_FAILURE);
 }
-push(&stack, atoi(arg));
+push(&stack, line_number, atoi(arg));
 }
 else if (strcmp(opcode, "pall") == 0)
 {
-pall(&stack);
+pall(&stack, line_number);
 }
 else
 {
