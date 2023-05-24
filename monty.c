@@ -10,7 +10,7 @@
  * Return: 1 if the string is numeric, 0 otherwise
  */
 
-int is_numeric(const char *)
+int is_numeric(const char *str)
 {
     int i;
     for (i = 0; str[i] != '\0'; i++)
@@ -101,9 +101,10 @@ int main(int argc, char *argv[])
     FILE *fp;
     char *line = NULL;
     size_t len = 0;
-    ssize_t read;
+    size_t read;
     unsigned int line_number = 0;
     stack_t *stack = NULL;
+    char *opcode;
 
     if (argc != 2)
     {
@@ -118,7 +119,6 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    char *opcode;
     while ((read = getline(&line, &len, fp)) != -1)
     {
         line_number++;

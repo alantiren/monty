@@ -39,6 +39,6 @@ typedef struct instruction_s
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack);
 void free_stack(stack_t *stack);
-int is_numeric(const char *);
+int is_numeric(const char *str);
 
 #endif /* MONTY_H */
