@@ -119,7 +119,7 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    while ((read = getline(&line, &len, fp)) != -1)
+    while ((read = fgets(line, sizeof(line), fp)) != NULL)
     {
         line_number++;
         opcode = strtok(line, " \t\n");
