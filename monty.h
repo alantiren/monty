@@ -55,6 +55,7 @@ void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **, unsigned int line_number );
 void rotl(stack_t **stack);
 void rotr(stack_t **stack);
+oid set_mode(stack_t **stack, int stack_mode_val, int queue_mode_val);
 
 /* Other function prototypes... */
 extern int queue_mode;
