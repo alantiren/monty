@@ -108,18 +108,15 @@ return (-1);
 }
 while (fgets(line, MAX_LINE_LENGTH, fp) != NULL)
 {
-if (line[0] == '#')
-continue;
 line_number++;
 opcode = strtok(line, " \t\n");
-if (opcode != NULL && opcode[0] != '#')
-{
+if (opcode == NULL || opcode[0] == '#')
+continue;
 if (execute_opcode(opcode, &stack, line_number) == -1)
 {
 free(line);
 free_stack(stack);
 return (-1);
-}
 }
 }
 

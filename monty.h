@@ -56,7 +56,6 @@ void pstr(stack_t **, unsigned int line_number );
 void rotl(stack_t **stack);
 void rotr(stack_t **stack);
 void set_mode(stack_t **stack, int stack_mode_val, int queue_mode_val);
-void pop(stack_t **stack, unsigned int line_number);
 
 /* Other function prototypes... */
 extern int queue_mode;
