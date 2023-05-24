@@ -100,44 +100,26 @@ current = current->next;
 int main(int argc, char *argv[])
 {
 FILE *fp;
-char *line = malloc(MAX_LINE_LENGTH);
-unsigned int line_number = 0;
-stack_t *stack = NULL;
-char *opcode;
+
 if (argc != 2)
 {
 fprintf(stderr, "USAGE: monty file\n");
 exit(EXIT_FAILURE);
 }
+
 fp = fopen(argv[1], "r");
 if (fp == NULL)
 {
 fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 exit(EXIT_FAILURE);
 }
-while (fgets(line, MAX_LINE_LENGTH, fp) != NULL)
+
+if (process_file(fp) == -1)
 {
-line_number++;
-opcode = strtok(line, " \t\n");
-if (opcode != NULL && opcode[0] != '#')
-{
-if (strcmp(opcode, "push") == 0)
-{
-push(&stack, line_number);
-}
-else if (strcmp(opcode, "pall") == 0)
-{
-pall(&stack);
-}
-else
-{
-fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
+fclose(fp);
 exit(EXIT_FAILURE);
 }
-}
-}
-free(line);
-free_stack(stack);
+
 fclose(fp);
 return (EXIT_SUCCESS);
 }
