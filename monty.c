@@ -38,6 +38,8 @@ char *n;
 int value;
 stack_t *new_node;
 n = strtok(NULL, " \t\n");
+extern int queue_mode;
+
 if (n == NULL || !is_numeric(n))
 {
 fprintf(stderr, "L%u: usage: push integer\n", line_number);
@@ -109,6 +111,8 @@ int main(int argc, char *argv[])
 {
 FILE *fp;
 int process_file(FILE *fp);
+int queue_mode = 0;
+int stack_mode = 1;
 
 queue_mode = 0;
 stack_mode = 1;

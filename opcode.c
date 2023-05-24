@@ -77,6 +77,9 @@ return (0);
 void set_mode(stack_t **stack, int stack_mode_val, int queue_mode_val)
 {
 (void)stack;
+int stack_mode = 1;
+int queue_mode = 0;
+
 stack_mode = stack_mode_val;
 queue_mode = queue_mode_val;
 }
