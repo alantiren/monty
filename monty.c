@@ -67,7 +67,7 @@ void push(stack_t **stack, unsigned int line_number)
  * starting from the top of the stack.
  * If the stack is empty, nothing is printed.
  */
-void pall(stack_t **stack, unsigned int line_number)
+void pall(stack_t **stack)
 {
     stack_t *current = *stack;
 
@@ -94,24 +94,25 @@ void pall(stack_t **stack, unsigned int line_number)
  */
 int main(int argc, char *argv[])
 {
+    FILE *fp;
+    char *line = NULL;
+    size_t len = 0;
+    stack_t *stack = NULL;
+    char *opcode;
+    unsigned int line_number = 0;
+
     if (argc != 2)
     {
         fprintf(stderr, "USAGE: monty file\n");
         exit(EXIT_FAILURE);
     }
 
-    FILE *fp = fopen(argv[1], "r");
+    fp = fopen(argv[1], "r");
     if (fp == NULL)
     {
         fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
         exit(EXIT_FAILURE);
     }
-
-    stack_t *stack = NULL;
-
-    char *line = NULL;
-    size_t len = 0;
-    unsigned int line_number = 0;
 
     while (getline(&line, &len, fp) != -1)
     {
