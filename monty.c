@@ -116,7 +116,6 @@ fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 exit(EXIT_FAILURE);
 }
 while (fgets(line, MAX_LINE_LENGTH, fp) != NULL)
-{
 line_number++;
 opcode = strtok(line, " \t\n");
 if (opcode != NULL && opcode[0] != '#')
@@ -135,10 +134,8 @@ fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
 exit(EXIT_FAILURE);
 }
 }
-}
 free(line);
 free_stack(stack);
 fclose(fp);
-
 return (EXIT_SUCCESS);
 }
