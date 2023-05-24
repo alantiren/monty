@@ -143,3 +143,151 @@ exit(EXIT_FAILURE);
 (*stack)->next->n /= (*stack)->n;
 pop(stack, line_number);
 }
+
+/**
+ * mul_op - Multiplies the second top element of the stack with the top element
+ * @stack: Double pointer to the top of the stack
+ * @line_number: Line number of the opcode in the file
+ *
+ * Description: The mul opcode multiplies the second top element of the stack
+ * with the top element of the stack. The result is stored in the second top
+ * element, and the top element is removed. If the stack contains less than
+ * two elements, an error message is printed and the program exits with
+ * EXIT_FAILURE status.
+ */
+
+void mul_op(stack_t **stack, unsigned int line_number)
+{
+if (*stack == NULL || (*stack)->next == NULL)
+{
+fprintf(stderr, "L%u: can't mul, stack too short\n", line_number);
+exit(EXIT_FAILURE);
+}
+
+(*stack)->next->n *= (*stack)->n;
+pop(stack, line_number);
+}
+
+/**
+ * mod_op - Computes the rest of the division of the second top element
+ *          of the stack by the top element
+ * @stack: Double pointer to the top of the stack
+ * @line_number: Line number of the opcode in the file
+ *
+ * Description: The mod opcode computes the rest of the division of the
+ * second top element of the stack by the top element. The result is stored
+ * in the second top element, and the top element is removed. If the stack
+ * contains less than two elements or if the top element is 0, an error
+ * message is printed and the program exits with EXIT_FAILURE status.
+ */
+
+void mod_op(stack_t **stack, unsigned int line_number)
+{
+if (*stack == NULL || (*stack)->next == NULL)
+{
+fprintf(stderr, "L%u: can't mod, stack too short\n", line_number);
+exit(EXIT_FAILURE);
+}
+if ((*stack)->n == 0)
+{
+fprintf(stderr, "L%u: division by zero\n", line_number);
+exit(EXIT_FAILURE);
+}
+(*stack)->next->n %= (*stack)->n;
+pop(stack, line_number);
+}
+
+/**
+ * pchar - Prints the character at the top of the stack
+ * @stack: Double pointer to the stack
+ * @line_number: Line number of the opcode
+ */
+
+void pchar(stack_t **stack, unsigned int line_number)
+{
+if (*stack == NULL)
+{
+fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
+exit(EXIT_FAILURE);
+}
+
+int value = (*stack)->n;
+if (value < 0 || value > 127)
+{
+fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
+exit(EXIT_FAILURE);
+}
+printf("%c\n", value);
+}
+
+/**
+ * pstr - Prints the string starting at the top of the stack
+ * @stack: Double pointer to the stack
+ * @line_number: Line number of the opcode
+ */
+
+void pstr(stack_t **stack, unsigned int line_number)
+{
+stack_t *current = *stack;
+while (current != NULL && current->n != 0 && current->n >= 0 && current->n <= 127)
+{
+if (isascii(current->n))
+putchar(current->n);
+else
+break;
+current = current->next;
+}
+putchar('\n');
+}
+
+/**
+ * rotl - Rotates the stack to the top
+ * @stack: Double pointer to the stack
+ * @line_number: Line number of the opcode
+ */
+
+void rotl(stack_t **stack, unsigned int line_number)
+{
+stack_t *first = *stack;
+stack_t *second = (*stack)->next;
+
+if (*stack != NULL && (*stack)->next != NULL)
+{
+while (first->next != NULL)
+first = first->next;
+
+first->next = *stack;
+(*stack)->prev = first;
+*stack = second;
+second->prev = NULL;
+first->next->next = NULL;
+}
+}
+
+/**
+ * rotr - Rotates the stack to the bottom
+ * @stack: Double pointer to the stack
+ * @line_number: Line number of the opcode
+ */
+
+void rotr(stack_t **stack, unsigned int line_number)
+{
+stack_t *last = *stack;
+stack_t *second_last;
+
+if (*stack != NULL && (*stack)->next != NULL)
+{
+while (last->next != NULL)
+last = last->next;
+
+second_last = last->prev;
+
+last->prev = NULL;
+last->next = *stack;
+(*stack)->prev = last;
+*stack = last;
+
+if (second_last != NULL)
+second_last->next = NULL;
+}
+}

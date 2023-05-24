@@ -62,8 +62,21 @@ if (*stack != NULL)
 new_node->next = *stack;
 (*stack)->prev = new_node;
 }
-
 *stack = new_node;
+if (queue_mode)
+{
+new_node->next = *stack;
+if (*stack != NULL)
+(*stack)->prev = new_node;
+*stack = new_node;
+}
+else
+{
+new_node->next = *stack;
+if (*stack != NULL)
+(*stack)->prev = new_node;
+*stack = new_node;
+}
 }
 
 
@@ -97,10 +110,16 @@ current = current->next;
  * Return: EXIT_SUCCESS upon successful execution, EXIT_FAILURE otherwise.
  */
 
+int queue_mode = 0;
+int stack_mode = 1;
+
 int main(int argc, char *argv[])
 {
 FILE *fp;
 int process_file(FILE *fp);
+queue_mode = 0;
+stack_mode = 1;
+
 if (argc != 2)
 {
 fprintf(stderr, "USAGE: monty file\n");
