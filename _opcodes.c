@@ -27,7 +27,6 @@ printf("%d\n", (*stack)->n);
  */
 
 void pop(stack_t **stack, unsigned int line_number)
-void pop(stack_t **stack, unsigned int line_number)
 {
 stack_t *temp;
 if (*stack == NULL)
