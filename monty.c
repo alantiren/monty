@@ -109,11 +109,6 @@ int main(int argc, char *argv[])
 {
 FILE *fp;
 int process_file(FILE *fp);
-int queue_mode = 0;
-int stack_mode = 1;
-
-queue_mode = 0;
-stack_mode = 1;
 
 if (argc != 2)
 {
