@@ -37,6 +37,8 @@ void push(stack_t **stack, unsigned int line_number)
 char *n;
 int value;
 stack_t *new_node;
+int queue_mode = 0;
+
 n = strtok(NULL, " \t\n");
 if (n == NULL || !is_numeric(n))
 {
