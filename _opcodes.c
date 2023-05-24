@@ -126,7 +126,7 @@ pop(stack, line_number);
  * and the program exits with EXIT_FAILURE status.
  */
 
-void div(stack_t **stack, unsigned int line_number)
+void div_op(stack_t **stack, unsigned int line_number)
 {
 if (*stack == NULL || (*stack)->next == NULL)
 {

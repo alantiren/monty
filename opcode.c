@@ -86,11 +86,8 @@ return (-1);
 }
 while (fgets(line, MAX_LINE_LENGTH, fp) != NULL)
 {
-{
 if (line[0] == '#')
 continue;
-execute_opcode(line, stack, line_number);
-}
 line_number++;
 opcode = strtok(line, " \t\n");
 if (opcode != NULL && opcode[0] != '#')
