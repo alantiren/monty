@@ -121,7 +121,6 @@ while (fgets(line, MAX_LINE_LENGTH, fp) != NULL)
 line_number++;
 opcode = strtok(line, " \t\n");
 if (opcode != NULL && opcode[0] != '#')
-{
 if (strcmp(opcode, "push") == 0)
 {
 char *arg = strtok(NULL, " \t\n");
@@ -134,7 +133,6 @@ else if (strcmp(opcode, "pall") == 0)
 {
 fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
 exit(EXIT_FAILURE);
-}
 }
 }
 }
