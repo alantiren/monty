@@ -61,6 +61,8 @@ exit(EXIT_FAILURE);
 aux = temp->next->n / temp->n;
 temp->next->n = aux;
 *stack = temp->next;
+if (temp->next)
+temp->next->prev = NULL;
 free(temp);
 }
 

@@ -34,16 +34,17 @@ current = next;
  * If the stack is empty,
  * an error message is printed and the program exits with EXIT_FAILURE.
  */
+
 void pop(stack_t **stack, unsigned int line_number)
 {
-stack_t *temp;
-
 if (*stack == NULL)
 {
 fprintf(stderr, "L%u: can't pop from an empty stack\n", line_number);
 exit(EXIT_FAILURE);
 }
-temp = *stack;
+stack_t *temp = *stack;
 *stack = temp->next;
+if (*stack)
+(*stack)->prev = NULL;
 free(temp);
 }

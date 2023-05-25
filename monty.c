@@ -109,7 +109,6 @@ current = current->next;
 int main(int argc, char *argv[])
 {
 FILE *fp;
-int process_file(FILE *fp);
 
 if (argc != 2)
 {
