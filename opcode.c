@@ -109,8 +109,10 @@ return (-1);
 while (fgets(line, MAX_LINE_LENGTH, fp) != NULL)
 {
 line_number++;
+if (line[0] == '#') // Skip comment lines
+continue;
 opcode = strtok(line, " \t\n");
-if (opcode == NULL || opcode[0] == '#')
+if (opcode == NULL)
 continue;
 if (execute_opcode(opcode, &stack, line_number) == -1)
 {
