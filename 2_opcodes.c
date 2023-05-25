@@ -52,7 +52,7 @@ if (len < 2)
 fprintf(stderr, "L%u: can't div, stack too short\n", line_number);
 fclose(fp);
 free(line);
-free_stack(*stack)
+free_stack(*stack);
 exit(EXIT_FAILURE);
 }
 temp = *stack;
