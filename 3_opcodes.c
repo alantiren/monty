@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
-
 #include "monty.h"
 
 /**
- * pstr - Prints the string starting at the top of the stack, followed by a newline
+ * pstr - Prints the string starting at
+ * the top of the stack, followed by a newline
  * @stack: Double pointer to the head of the stack
  * @line_number: Line number of the opcode being executed
  */
@@ -18,16 +17,16 @@ stack_t *current = *stack;
 
 while (current != NULL && current->n != 0)
 {
-if (isascii(current->n))
+if (current->n >= 0 && current->n <= 127)
 printf("%c", current->n);
 else
 break;
 
 current = current->next;
 }
-
 printf("\n");
 }
+
 
 /**
  * rotl - Rotates the stack to the top
