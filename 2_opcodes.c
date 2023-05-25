@@ -50,18 +50,12 @@ len++;
 if (len < 2)
 {
 fprintf(stderr, "L%u: can't div, stack too short\n", line_number);
-fclose(fp);
-free(line);
-free_stack(*stack);
 exit(EXIT_FAILURE);
 }
 temp = *stack;
 if (temp->n == 0)
 {
 fprintf(stderr, "L%u: division by zero\n", line_number);
-fclose(fp);
-free(line);
-free_stack(*stack);
 exit(EXIT_FAILURE);
 }
 aux = temp->next->n / temp->n;
