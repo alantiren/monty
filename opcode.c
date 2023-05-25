@@ -109,7 +109,7 @@ return (-1);
 while (fgets(line, MAX_LINE_LENGTH, fp) != NULL)
 {
 line_number++;
-if (line[0] == '#') // Skip comment lines
+if (line[0] == '#')
 continue;
 opcode = strtok(line, " \t\n");
 if (opcode == NULL)
