@@ -41,11 +41,12 @@ stack_t *temp;
 if (*stack == NULL)
 {
 fprintf(stderr, "L%u: can't pop from an empty stack\n", line_number);
+fclose(fp);
+free(line);
+free_stack(*stack)
 exit(EXIT_FAILURE);
 }
 temp = *stack;
-*stack = (*stack)->next;
-if (*stack != NULL)
-(*stack)->prev = NULL;
+*stack = temp->next;
 free(temp);
 }
