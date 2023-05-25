@@ -5,6 +5,8 @@
 
 #include "monty.h"
 
+int isascii(int c);
+
 /**
  * pstr - Prints the string starting at
  * the top of the stack, followed by a newline
