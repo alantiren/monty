@@ -14,7 +14,6 @@
 
 void pstr(stack_t **stack, unsigned int line_number)
 {
-int isascii(int c);
 
 stack_t *current = *stack;
 (void)line_number;
