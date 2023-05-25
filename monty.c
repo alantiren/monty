@@ -127,5 +127,6 @@ fclose(fp);
 exit(EXIT_FAILURE);
 }
 fclose(fp);
-return (EXIT_SUCCESS);
+return EXIT_SUCCESS;
 }
+
