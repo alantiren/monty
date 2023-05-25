@@ -129,4 +129,3 @@ exit(EXIT_FAILURE);
 fclose(fp);
 return (EXIT_SUCCESS);
 }
-
