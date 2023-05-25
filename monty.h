@@ -58,6 +58,8 @@ void pstr(stack_t **, unsigned int line_number );
 void rotl(stack_t **stack);
 void rotr(stack_t **stack);
 void set_mode(stack_t **stack, int stack_mode_val, int queue_mode_val);
+int process_file(FILE *fp);
+
 
 /* Other function prototypes... */
 extern int queue_mode;
