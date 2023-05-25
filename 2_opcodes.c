@@ -61,7 +61,7 @@ if (temp->n == 0)
 fprintf(stderr, "L%u: division by zero\n", line_number);
 fclose(fp);
 free(line);
-free_stack(*stack)
+free_stack(*stack);
 exit(EXIT_FAILURE);
 }
 aux = temp->next->n / temp->n;
