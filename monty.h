@@ -59,6 +59,8 @@ void rotl(stack_t **stack);
 void rotr(stack_t **stack);
 void set_mode(stack_t **stack, int stack_mode_val, int queue_mode_val);
 int process_file(FILE *fp);
+int execute_opcode(const char *opcode, stack_t **stack,
+unsigned int line_number, opcode_mapping_t *opcode_map)
 stack_t *push_node(stack_t **stack, int value);
 
 
