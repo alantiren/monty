@@ -41,6 +41,7 @@ void (*f)(stack_t **stack, unsigned int line_number);
 
 /**
  * Enum to represent the data format (stack or queue)
+ * @enum to represent the data format (stack or queue)
  */
 typedef enum
 {
