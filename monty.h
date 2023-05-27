@@ -40,13 +40,15 @@ void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 /**
- * enum to represent the data format (stack or queue)
+ * enum data_format_e - enum to represent the data format (stack or queue)
+ * @STACK: stack format (LIFO)
+ * @QUEUE: queue format (FIFO)
  */
-typedef enum
+enum data_format_e
 {
 STACK,
 QUEUE
-} data_format_t;
+};
 
 /* Function prototypes */
 void push(stack_t **stack, unsigned int line_number);
