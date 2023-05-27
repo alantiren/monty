@@ -50,6 +50,31 @@ exit(EXIT_FAILURE);
 }
 }
 
+-/**
+ * push_node - Pushes a new node to the stack
+ * @stack: Double pointer to the head of the stack
+ * @value: Value to be pushed
+ * Return: Pointer to the newly added node, or NULL on failure
+ */
+
+stack_t *push_node(stack_t **stack, int value)
+{
+stack_t *new_node = malloc(sizeof(stack_t));
+if (new_node == NULL)
+return (NULL);
+
+new_node->n = value;
+new_node->prev = NULL;
+new_node->next = *stack;
+
+if (*stack != NULL)
+(*stack)->prev = new_node;
+
+*stack = new_node;
+return (new_node);
+}
+
+
 /**
  * pall - Implements the pall opcode.
  * @stack: Double pointer to the top of the stack.
