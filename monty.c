@@ -50,7 +50,7 @@ exit(EXIT_FAILURE);
 }
 }
 
--/**
+/**
  * push_node - Pushes a new node to the stack
  * @stack: Double pointer to the head of the stack
  * @value: Value to be pushed
