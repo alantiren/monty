@@ -53,11 +53,11 @@ else if (strcmp(opcode, "stack") == 0)
 set_mode(stack, 1, 0);
 else if (strcmp(opcode, "queue") == 0)
 set_mode(stack, 0, 1);
-else{
+else
+{
 fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
-return (-1);}
-return (0);
-}
+return (-1); }
+return (0); }
 
 /**
  * set_mode - Sets the stack and queue modes.
