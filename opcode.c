@@ -59,7 +59,7 @@ const char *opcode = "push";
 unsigned int line_number = 1;
 stack_t *stack = NULL;
 execute_opcode(opcode, &stack, line_number, opcode_map);
-return (0);
+return 0;
 }
 
 
