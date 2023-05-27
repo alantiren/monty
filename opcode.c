@@ -65,9 +65,6 @@ set_mode(stack, 0, 1);
 else{
 fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
 return (-1);}
-<<<<<<< HEAD
->>>>>>> parent of 6ddb1f0 (updates)
-=======
 >>>>>>> parent of 6ddb1f0 (updates)
 return (0);
 }
