@@ -10,7 +10,7 @@ void stack_format(stack_t **stack, unsigned int line_number)
 {
 (void)stack;
 (void)line_number;
-monty.format = STACK;
+
 }
 
 /**
@@ -43,5 +43,4 @@ current->next = *stack;
 
 prev->next = NULL;
 
-monty.format = QUEUE;
 }
