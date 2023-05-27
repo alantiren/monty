@@ -1,3 +1,5 @@
+#include "monty.h"
+
 /**
  * stack_format - Sets the format of the data to stack (LIFO)
  * @stack: Double pointer to the top of the stack
