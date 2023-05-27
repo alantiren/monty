@@ -59,6 +59,7 @@ void rotl(stack_t **stack);
 void rotr(stack_t **stack);
 void set_mode(stack_t **stack, int stack_mode_val, int queue_mode_val);
 int process_file(FILE *fp);
+stack_t *push_node(stack_t **stack, int value);
 
 
 /* Other function prototypes... */

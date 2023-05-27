@@ -36,7 +36,6 @@ void push(stack_t **stack, unsigned int line_number)
 {
 char *arg = strtok(NULL, " \t\n");
 int value;
-
 if (arg == NULL || !is_numeric(arg))
 {
 fprintf(stderr, "L%d: usage: push integer\n", line_number);
@@ -44,7 +43,7 @@ exit(EXIT_FAILURE);
 }
 
 value = atoi(arg);
-if (add_node(stack, value) == NULL)
+if (push_node(stack, value) == NULL)
 {
 fprintf(stderr, "Error: malloc failed\n");
 exit(EXIT_FAILURE);
@@ -67,6 +66,29 @@ while (current != NULL)
 printf("%d\n", current->n);
 current = current->next;
 }
+}
+
+/**
+ * push_node - Pushes a new node to the stack
+ * @stack: Double pointer to the head of the stack
+ * @value: Value to be pushed
+ * Return: Pointer to the newly added node, or NULL on failure
+ */
+stack_t *push_node(stack_t **stack, int value)
+{
+stack_t *new_node = malloc(sizeof(stack_t));
+if (new_node == NULL)
+return (NULL);
+
+new_node->n = value;
+new_node->prev = NULL;
+new_node->next = *stack;
+
+if (*stack != NULL)
+(*stack)->prev = new_node;
+
+*stack = new_node;
+return (new_node);
 }
 
 /**
