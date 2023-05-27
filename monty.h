@@ -55,7 +55,7 @@ void mul(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
 void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **, unsigned int line_number);
-void rotl(stack_t **stack);
+void rotl(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack);
 void set_mode(stack_t **stack, int stack_mode_val, int queue_mode_val);
 int process_file(FILE *fp);

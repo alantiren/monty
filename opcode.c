@@ -46,7 +46,7 @@ pchar(stack, line_number);
 else if (strcmp(opcode, "pstr") == 0)
 pstr(stack, line_number);
 else if (strcmp(opcode, "rotl") == 0)
-rotl(stack);
+rotl(stack, line number);
 else if (strcmp(opcode, "rotr") == 0)
 rotr(stack);
 else if (strcmp(opcode, "stack") == 0)
