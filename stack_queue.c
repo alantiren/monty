@@ -10,7 +10,7 @@ void stack_format(stack_t **stack, unsigned int line_number)
 {
 (void)stack;
 (void)line_number;
-
+monty.format = STACK;
 }
 
 /**
@@ -21,7 +21,27 @@ void stack_format(stack_t **stack, unsigned int line_number)
 
 void queue_format(stack_t **stack, unsigned int line_number)
 {
-(void)stack;
+stack_t *current = *stack;
+stack_t *prev = NULL;
+
 (void)line_number;
 
+if (*stack == NULL || (*stack)->next == NULL)
+return;
+
+while (current->next != NULL)
+{
+prev = current;
+current = current->next;
+}
+
+current->next = *stack;
+(*stack)->prev = current;
+
+*stack = (*stack)->next;
+(*stack)->prev = NULL;
+
+prev->next = NULL;
+
+monty.format = QUEUE;
 }
