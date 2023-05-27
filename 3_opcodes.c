@@ -30,27 +30,24 @@ printf("\n");
 
 /**
  * rotl - Rotates the stack to the top
- * @stack: Double pointer to the top of the stack
- * @line_number: Line number of the opcode in the file
+ * @stack: Double pointer to the stack
  */
 
-void rotl(stack_t **stack, unsigned int line_number)
+void rotl(stack_t **stack)
 {
-stack_t *current = *stack;
+stack_t *first = *stack;
+stack_t *second = (*stack)->next;
+if (*stack != NULL && (*stack)->next != NULL)
+{
+while (first->next != NULL)
+first = first->next;
 
-(void)line_number;
-
-if (current == NULL || current->next == NULL)
-return;
-
-while (current->next != NULL)
-current = current->next;
-
-current->next = *stack;
-(*stack)->prev = current;
-*stack = (*stack)->next;
-(*stack)->prev = NULL;
-current->next->next = NULL;
+first->next = *stack;
+(*stack)->prev = first;
+*stack = second;
+second->prev = NULL;
+first->next->next = NULL;
+}
 }
 
 /**
