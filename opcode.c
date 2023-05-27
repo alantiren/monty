@@ -14,7 +14,8 @@
  * Return: 0 if opcode executed successfully, -1 on failure
  */
 
-int execute_opcode(const char *opcode, stack_t **stack, unsigned int line_number)
+int execute_opcode(const char *opcode, stack_t **stack,
+unsigned int line_number)
 {
 if (opcode == NULL || opcode[0] == '#') return (0);
 if (strcmp(opcode, "push") == 0)
@@ -52,10 +53,9 @@ set_mode(stack, 1, 0);
 else if (strcmp(opcode, "queue") == 0)
 set_mode(stack, 0, 1);
 else
-{
 fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
 return (-1);
-}
+
 return (0);
 }
 
