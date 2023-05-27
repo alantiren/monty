@@ -14,27 +14,7 @@
  * Return: 0 if opcode executed successfully, -1 on failure
  */
 
-int execute_opcode(const char *opcode, stack_t **stack,
-unsigned int line_number, opcode_mapping_t *opcode_map)
-{
-if (opcode == NULL || opcode[0] == '#')
-return (0);
-int i = 0;
-while (opcode_map[i].opcode != NULL)
-{
-if (strcmp(opcode, opcode_map[i].opcode) == 0)
-{
-opcode_map[i].function(stack, line_number);
-return (0);
-}
-i++;
-}
-fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
-return (-1);
-}
-
-int main(void)
-{
+// Define the opcode-function mappings using an array of structures
 opcode_mapping_t opcode_map[] = {
 {"push", push},
 {"pall", pall},
@@ -55,11 +35,24 @@ opcode_mapping_t opcode_map[] = {
 {"queue", set_mode},
 {NULL, NULL}
 };
-const char *opcode = "push";
-unsigned int line_number = 1;
-stack_t *stack = NULL;
-execute_opcode(opcode, &stack, line_number, opcode_map);
-return 0;
+
+int execute_opcode(const char *opcode, stack_t **stack,
+unsigned int line_number)
+{
+if (opcode == NULL || opcode[0] == '#')
+return (0);
+int i = 0;
+while (opcode_map[i].opcode != NULL)
+{
+if (strcmp(opcode, opcode_map[i].opcode) == 0)
+{
+opcode_map[i].function(stack, line_number);
+return (0);
+}
+i++;
+}
+fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
+return (-1);
 }
 
 
