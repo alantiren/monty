@@ -53,6 +53,7 @@ exit(EXIT_FAILURE);
 /**
  * pall - Implements the pall opcode.
  * @stack: Double pointer to the top of the stack.
+ *@line_number: Line number of the opcode being executed
  */
 
 void pall(stack_t **stack, unsigned int line_number)
