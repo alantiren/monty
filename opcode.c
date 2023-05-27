@@ -56,7 +56,6 @@ set_mode(stack, 0, 1);
 else
 fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
 return (-1);
-
 return (0);
 }
 
