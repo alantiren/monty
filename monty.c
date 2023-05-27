@@ -34,45 +34,20 @@ return (1);
 
 void push(stack_t **stack, unsigned int line_number)
 {
-char *n;
+char *arg = strtok(NULL, " \t\n");
 int value;
-stack_t *new_node;
-int queue_mode = 0;
-n = strtok(NULL, " \t\n");
-if (n == NULL || !is_numeric(n))
+
+if (arg == NULL || !is_numeric(arg))
 {
-fprintf(stderr, "L%u: usage: push integer\n", line_number);
+fprintf(stderr, "L%d: usage: push integer\n", line_number);
 exit(EXIT_FAILURE);
 }
-value = atoi(n);
-new_node = malloc(sizeof(stack_t));
-if (new_node == NULL)
+
+value = atoi(arg);
+if (add_node(stack, value) == NULL)
 {
 fprintf(stderr, "Error: malloc failed\n");
-free_stack(*stack);
 exit(EXIT_FAILURE);
-}
-new_node->n = value;
-new_node->prev = NULL;
-if (*stack != NULL)
-{
-new_node->next = *stack;
-(*stack)->prev = new_node;
-}
-*stack = new_node;
-if (queue_mode)
-{
-new_node->next = *stack;
-if (*stack != NULL)
-(*stack)->prev = new_node;
-*stack = new_node;
-}
-else
-{
-new_node->next = *stack;
-if (*stack != NULL)
-(*stack)->prev = new_node;
-*stack = new_node;
 }
 }
 
@@ -81,9 +56,12 @@ if (*stack != NULL)
  * @stack: Double pointer to the top of the stack.
  */
 
-void pall(stack_t **stack)
+void pall(stack_t **stack, unsigned int line_number)
 {
 stack_t *current = *stack;
+
+(void)line_number;
+
 while (current != NULL)
 {
 printf("%d\n", current->n);
